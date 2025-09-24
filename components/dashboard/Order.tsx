@@ -1,5 +1,6 @@
 import { CommonText } from "@/components/CommonText";
-import { Button, Card, Flex, Space, theme, Typography } from "antd";
+import { Button, Card, Flex, Space, Spin, theme, Typography } from "antd";
+import { Suspense } from "react";
 import DoubleLineChart from "../DoubleLineChart";
 const { Title, Text } = Typography;
 
@@ -68,7 +69,9 @@ export default function Order() {
         </Button>
       </Flex>
       <Card style={{ width: "100%" }}>
-        <DoubleLineChart />
+        <Suspense fallback={<Spin size="large" />}>
+          <DoubleLineChart />
+        </Suspense>
       </Card>
     </>
   );

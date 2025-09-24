@@ -1,6 +1,7 @@
 import BarChart from "@/components/BarChart";
 import { CommonText } from "@/components/CommonText";
-import { Button, Card, Flex, Space, theme, Typography } from "antd";
+import { Button, Card, Flex, Space, Spin, theme, Typography } from "antd";
+import { Suspense } from "react";
 const { Title, Text } = Typography;
 
 export default function Revenue() {
@@ -68,7 +69,9 @@ export default function Revenue() {
         </Button>
       </Flex>
       <Card style={{ width: "100%" }}>
-        <BarChart />
+        <Suspense fallback={<Spin size="large" />}>
+          <BarChart />
+        </Suspense>
       </Card>
     </>
   );

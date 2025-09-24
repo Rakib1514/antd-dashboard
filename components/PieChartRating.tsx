@@ -1,8 +1,11 @@
 "use client";
 
-import React from "react";
-import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
+import dynamic from "next/dynamic";
+
+const ReactApexChart = dynamic(() => import("react-apexcharts"), {
+  ssr: false,
+});
 
 const PieChartRating = () => {
   const series = [30, 30, 40]; 

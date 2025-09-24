@@ -1,27 +1,10 @@
-import { Flex, theme, Typography } from "antd";
+import { Flex, Spin, theme, Typography } from "antd";
+import { Suspense } from "react";
 import BubbleChart from "../PieChartRating";
 const { Text } = Typography;
 
 export default function RatingScatterChart() {
   const { token } = theme.useToken();
-
-  const ratingArr = [
-    {
-      title: "hygin",
-      value: 85,
-      color: "#149D52",
-    },
-    {
-      title: "hygin",
-      value: 60,
-      color: "#149D52",
-    },
-    {
-      title: "hygin",
-      value: 30,
-      color: "#149D52",
-    },
-  ];
 
   return (
     <>
@@ -41,7 +24,9 @@ export default function RatingScatterChart() {
         </Text>
       </Flex>
 
-      <BubbleChart />
+      <Suspense fallback={<Spin size="large" />}>
+        <BubbleChart />
+      </Suspense>
     </>
   );
 }

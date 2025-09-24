@@ -5,6 +5,7 @@ const themeAntd: ThemeConfig = {
   token: {
     fontSize: 16,
     colorPrimary: "#5A6ACF",
+    colorBorderPrimary: '#C8CBD9',
 
     // Expand Custom token
     colorBgPrimary50: "#F1F2F7",

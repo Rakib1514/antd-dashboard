@@ -1,5 +1,6 @@
 import { CommonText } from "@/components/CommonText";
-import { Button, Flex, theme, Typography } from "antd";
+import { Button, Flex, Spin, theme, Typography } from "antd";
+import { Suspense } from "react";
 import DonutChart from "../DonutChart";
 const { Text } = Typography;
 
@@ -32,7 +33,9 @@ export default function OrderTime() {
           View Report
         </Button>
       </Flex>
-      <DonutChart/>
+      <Suspense fallback={<Spin size="large" />}>
+        <DonutChart/>
+      </Suspense>
     </>
   );
 }

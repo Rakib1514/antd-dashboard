@@ -1,10 +1,13 @@
 "use client";
 
-import React from "react";
-import ReactApexChart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
+import dynamic from "next/dynamic";
 
-const DonutChart= () => {
+const ReactApexChart = dynamic(() => import("react-apexcharts"), {
+  ssr: false,
+});
+
+const DonutChart = () => {
   const series = [40, 32, 28]; 
   const labels = ["Afternoon", "Evening", "Morning"];
   const colors = ["#5A6ACF", "#8593ED", "#C7CEFF"]; 

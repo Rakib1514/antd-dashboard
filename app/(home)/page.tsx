@@ -1,11 +1,11 @@
-import { Button } from "antd";
+import { Button, Flex } from "antd";
 
 export default function Home() {
   return (
-    <div>
+    <Flex justify="center" align="center" style={{ minHeight: "100vh" }}>
       <Button type="primary" href="/dashboard">
         Dashboard
       </Button>
-    </div>
+    </Flex>
   );
 }

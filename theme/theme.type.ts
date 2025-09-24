@@ -6,5 +6,6 @@ declare module "antd/es/theme/interface" {
     colorBlack?: string;
     colorGray?: string;
     fontSizeCommonText?: number;
+    colorBorderPrimary?: string;
   }
 }
