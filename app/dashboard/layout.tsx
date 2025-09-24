@@ -12,11 +12,12 @@ import {
   MenuItemProps,
   MenuProps,
   Space,
+  Spin,
   theme,
-  Typography
+  Typography,
 } from "antd";
 import { useRouter } from "next/navigation";
-import { PropsWithChildren, useState } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 const { Sider } = Layout;
 const { useToken } = theme;
 
@@ -27,8 +28,28 @@ const { Text } = Typography;
 export default function DashboardLayout({ children }: PropsWithChildren) {
   const [isSiderCollapsed, setIsSiderCollapsed] = useState(false);
   const router = useRouter();
-
   const { token } = useToken();
+
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh",
+        }}
+      >
+        <Spin size="large" tip="Loading..." />
+      </div>
+    );
+  }
 
   const onMenuItemClick: MenuItemProps["onClick"] = (e) => {
     router.push(e.key);
@@ -52,6 +73,7 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
       label: "Custom Review",
     },
   ];
+
   return (
     <Layout>
       <Sider

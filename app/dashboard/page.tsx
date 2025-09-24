@@ -10,9 +10,8 @@ import { Col, Row, theme, Typography } from "antd";
 const { Title } = Typography;
 
 export default function Dashboard() {
-
   const { token } = theme.useToken();
-  
+
   return (
     <div className="">
       <Title level={4} style={{ margin: "40px 0 " }}>
@@ -32,7 +31,13 @@ export default function Dashboard() {
           <RevenueCol />
         </Col>
 
-        <Col span={8} style={{ paddingLeft: "40px", borderBottom: `1px solid ${token.colorBorderPrimary}` }}>
+        <Col
+          span={8}
+          style={{
+            paddingLeft: "40px",
+            borderBottom: `1px solid ${token.colorBorderPrimary}`,
+          }}
+        >
           <OrderTime />
         </Col>
 
@@ -47,10 +52,17 @@ export default function Dashboard() {
           <RatingScatterChart />
         </Col>
 
-        <Col span={8} style={{ padding: "40px" , paddingBottom: "0px", borderRight: `1px solid ${token.colorBorderPrimary}` }}>
+        <Col
+          span={8}
+          style={{
+            padding: "40px",
+            paddingBottom: "0px",
+            borderRight: `1px solid ${token.colorBorderPrimary}`,
+          }}
+        >
           <MostOrdered />
         </Col>
-        <Col span={8} style={{ paddingTop: "40px", paddingLeft: "40px"}}>
+        <Col span={8} style={{ paddingTop: "40px", paddingLeft: "40px" }}>
           <Order />
         </Col>
       </Row>
