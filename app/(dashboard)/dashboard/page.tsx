@@ -7,13 +7,14 @@ import RatingScatterChart from "@/components/dashboard/RatingScatterChart";
 import RevenueCol from "@/components/dashboard/Revenue";
 import { Col, Row, theme, Typography } from "antd";
 
-const { Title } = Typography;
 
 export default function Dashboard() {
   const { token } = theme.useToken();
+const { Title } = Typography;
+
 
   return (
-    <div className="">
+    <div style={{padding: "0 16px"}}>
       <Title level={4} style={{ margin: "40px 0 " }}>
         Dashboard
       </Title>

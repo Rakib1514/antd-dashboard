@@ -2,10 +2,15 @@ import BarChart from "@/components/BarChart";
 import { CommonText } from "@/components/CommonText";
 import { Button, Card, Flex, Space, Spin, theme, Typography } from "antd";
 import { Suspense } from "react";
-const { Title, Text } = Typography;
+
 
 export default function Revenue() {
   const { token } = theme.useToken();
+  const { Title, Text } = Typography;
+
+  
+  
+  
   return (
     <>
       <Flex justify="space-between">

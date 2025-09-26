@@ -2,10 +2,11 @@ import { CommonText } from "@/components/CommonText";
 import { Button, Card, Flex, Space, Spin, theme, Typography } from "antd";
 import { Suspense } from "react";
 import DoubleLineChart from "../DoubleLineChart";
-const { Title, Text } = Typography;
 
 export default function Order() {
   const { token } = theme.useToken();
+const { Title, Text } = Typography;
+
   return (
     <>
       <Flex justify="space-between">

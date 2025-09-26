@@ -60,7 +60,7 @@ export default function MostOrdered() {
               }
               title={<Text style={{ fontSize: "16px", fontWeight: "500" }}>{item.title}</Text>}
             />
-            <Text style={{ fontSize: "16px" }}>IDR {item.price.toFixed(3)}</Text>
+            <Text style={{ fontSize: "16px" }}>IDR {item.price.toFixed(2)}</Text>
           </List.Item>
         )}
       />

@@ -1,36 +1,24 @@
 "use client";
 
-import {
-  ContainerOutlined,
-  DesktopOutlined,
-  PieChartOutlined,
-} from "@ant-design/icons";
+import SidebarMenu from "@/components/SidebarMenu";
 import {
   Divider,
   Layout,
-  Menu,
-  MenuItemProps,
-  MenuProps,
   Space,
   Spin,
   theme,
-  Typography,
+  Typography
 } from "antd";
-import { useRouter } from "next/navigation";
 import { PropsWithChildren, useEffect, useState } from "react";
 const { Sider } = Layout;
 const { useToken } = theme;
-
-type MenuItem = Required<MenuProps>["items"][number];
 
 const { Text } = Typography;
 
 export default function DashboardLayout({ children }: PropsWithChildren) {
   const [isSiderCollapsed, setIsSiderCollapsed] = useState(false);
-  const router = useRouter();
-  const { token } = useToken();
-
   const [isMounted, setIsMounted] = useState(false);
+  const { token } = useToken();
 
   useEffect(() => {
     setIsMounted(true);
@@ -46,33 +34,10 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
           minHeight: "100vh",
         }}
       >
-        <Spin size="large" tip="Loading..." />
+        <Spin size="large" />
       </div>
     );
   }
-
-  const onMenuItemClick: MenuItemProps["onClick"] = (e) => {
-    router.push(e.key);
-  };
-
-  const items: MenuItem[] = [
-    { key: "/dashboard", icon: <PieChartOutlined />, label: "Dashboard" },
-    {
-      key: "/dashboard/food-order",
-      icon: <DesktopOutlined />,
-      label: "Food order",
-    },
-    {
-      key: "/dashboard/manage-menu",
-      icon: <ContainerOutlined />,
-      label: "Manage Menu",
-    },
-    {
-      key: "/custom-review",
-      icon: <ContainerOutlined />,
-      label: "Custom Review",
-    },
-  ];
 
   return (
     <Layout>
@@ -119,17 +84,7 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
         </Space>
         <Divider />
 
-        <Menu
-          defaultSelectedKeys={["/dashboard"]}
-          onClick={onMenuItemClick}
-          mode="inline"
-          theme="light"
-          items={items}
-          style={{
-            backgroundColor: token.colorBgPrimary50,
-            color: token.colorBlack,
-          }}
-        />
+        <SidebarMenu />
       </Sider>
 
       <Layout>
@@ -166,7 +121,14 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
           </Text>
         </Space>
         <Divider style={{ margin: 0 }} />
-        <Layout className="max-w-6xl w-full min-h-screen mx-auto ">
+        <Layout
+          style={{
+            maxWidth: "1152px",
+            width: "100%",
+            minHeight: "100vh",
+            margin: "0 auto",
+          }}
+        >
           {children}
         </Layout>
       </Layout>

@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body >
         <ConfigProvider theme={theme}>{children}</ConfigProvider>
       </body>
     </html>
