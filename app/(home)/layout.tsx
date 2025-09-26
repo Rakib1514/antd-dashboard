@@ -1,11 +1,13 @@
-import Navbar from "@/components/Navbar";
+import LayoutWrapper from "@/components/LayoutWrapper";
 import { PropsWithChildren } from "react";
 
 export default function AppLayout({ children }: PropsWithChildren) {
   return (
     <>
-      <Navbar />
+      <LayoutWrapper showHeader>
+
       {children}
+      </LayoutWrapper>
     </>
   );
 }
