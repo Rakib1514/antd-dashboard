@@ -14,7 +14,7 @@ const { Title } = Typography;
 
 
   return (
-    <div style={{padding: "0 16px"}}>
+    <div style={{padding: "0 16px", overflow: "hidden"}}>
       <Title level={4} style={{ margin: "40px 0 " }}>
         Dashboard
       </Title>

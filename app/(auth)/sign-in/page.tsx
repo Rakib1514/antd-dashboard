@@ -1,8 +1,8 @@
 "use client";
 
-import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import { ArrowLeftOutlined, LockOutlined, UserOutlined } from "@ant-design/icons";
 import type { FormProps } from "antd";
-import { Button, Checkbox, Flex, Form, Input, Typography } from "antd";
+import { Button, Checkbox, Flex, Form, Input, Space, Typography } from "antd";
 
 type FieldType = {
   username?: string;
@@ -18,12 +18,17 @@ const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
 
 const Signin = () => (
   <>
-    <Typography.Title
-      level={1}
-      style={{ margin: "40px 0 ", textAlign: "center" }}
-    >
-      Sign in
-    </Typography.Title>
+     <Space align="center">
+        <Button type="text" icon={<ArrowLeftOutlined />} href="/">
+          Home
+        </Button>
+        <Typography.Title
+          level={1}
+          style={{ margin: "40px 0 ", textAlign: "center" }}
+        >
+          Sign in to your account
+        </Typography.Title>
+      </Space>
 
     <Form
       name="login"

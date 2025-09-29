@@ -4,7 +4,7 @@ import { PropsWithChildren } from "react";
 export default function AppLayout({ children }: PropsWithChildren) {
   return (
     <>
-      <LayoutWrapper showHeader>
+      <LayoutWrapper showHeader showSider={false}>
 
       {children}
       </LayoutWrapper>
