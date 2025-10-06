@@ -1,0 +1,62 @@
+[
+  {
+    "sender": "LV10000",
+    "receiver": "LV10004",
+    "message": "Hey, did you finish the design mockups for the new client?"
+  },
+  {
+    "sender": "LV10004",
+    "receiver": "LV10000",
+    "message": "Almost done! Just putting the final touches on the homepage. Should have it to you by EOD."
+  },
+  {
+    "sender": "LV10000",
+    "receiver": "LV10004",
+    "message": "Awesome, can't wait to see them. The client is excited."
+  },
+  {
+    "sender": "LV10004",
+    "receiver": "LV10000",
+    "message": "No pressure! 😅 By the way, which color scheme do you prefer: the blue or the green accent?"
+  },
+  {
+    "sender": "LV10000",
+    "receiver": "LV10004",
+    "message": "Hmm, I think the green feels more fresh and modern. Let's go with that."
+  },
+  {
+    "sender": "LV10004",
+    "receiver": "LV10000",
+    "message": "Great choice. I'll update it. Thanks!"
+  },
+  {
+    "sender": "LV10000",
+    "receiver": "LV10004",
+    "message": "No problem. Oh, and don't forget we have that team lunch tomorrow."
+  },
+  {
+    "sender": "LV10004",
+    "receiver": "LV10000",
+    "message": "Wouldn't miss it! Are we still going to that new Italian place?"
+  },
+  {
+    "sender": "LV10000",
+    "receiver": "LV10004",
+    "message": "Yep, reservation is under the company name. 12:30 PM."
+  },
+  {
+    "sender": "LV10004",
+    "receiver": "LV10000",
+    "message": "Perfect. My stomach is already looking forward to it."
+  },
+  {
+    "sender": "LV10000",
+    "receiver": "LV10004",
+    "message": "Haha, mine too. Alright, back to work. Talk soon!"
+  },
+  {
+    "sender": "LV10004",
+    "receiver": "LV10000",
+    "message": "Sure thing. I'll send those mockups over soon."
+  }
+]

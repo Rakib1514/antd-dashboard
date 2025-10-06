@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  CalendarOutlined,
   ContainerOutlined,
   DesktopOutlined,
   HomeOutlined,
@@ -29,9 +30,9 @@ export default function SidebarMenu() {
       label: "Food Menu",
     },
     {
-      key: "/manage-order",
+      key: "/chat-box",
       icon: <ContainerOutlined />,
-      label: "Manage Order",
+      label: "Message us",
     },
     {
       key: "/dashboard/customer-review",
@@ -39,9 +40,14 @@ export default function SidebarMenu() {
       label: "Customer Review",
     },
     {
-      key: "/dashboard/settings",
+      key: "/dashboard/create-schedule",
       icon: <StarOutlined />,
-      label: "Settings",
+      label: "Crate Schedule",
+    },
+    {
+      key: "/dashboard/view-calender",
+      icon: <CalendarOutlined />,
+      label: "View Calender",
     },
     { type: "divider", style: { margin: "16px 0" } },
     {

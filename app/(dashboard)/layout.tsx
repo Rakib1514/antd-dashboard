@@ -28,7 +28,11 @@ export default function DashboardLayout({ children }: PropsWithChildren) {
   }
 
   return (
-    <LayoutWrapper showSider customHeader={<DashboardHeader />}>
+    <LayoutWrapper
+      showSider
+      showHeader={false}
+      customHeader={<DashboardHeader />}
+    >
       {children}
     </LayoutWrapper>
   );

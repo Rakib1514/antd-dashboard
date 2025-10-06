@@ -1,0 +1,77 @@
+[
+  {
+    "sender": "LV10000",
+    "receiver": "LV10003",
+    "message": "Hey, are you still on for the meeting at 3 PM?"
+  },
+  {
+    "sender": "LV10003",
+    "receiver": "LV10000",
+    "message": "Yes, absolutely! I'll have the presentation ready by then."
+  },
+  {
+    "sender": "LV10000",
+    "receiver": "LV10003",
+    "message": "Perfect. Did you get a chance to review the Q3 report I sent?"
+  },
+  {
+    "sender": "LV10003",
+    "receiver": "LV10000",
+    "message": "I did, the numbers look great! I had a question about the marketing budget though."
+  },
+  {
+    "sender": "LV10000",
+    "receiver": "LV10003",
+    "message": "We can dive into that during the meeting. I'll send the detailed breakdown now."
+  },
+  {
+    "sender": "LV10003",
+    "receiver": "LV10000",
+    "message": "Thanks, that would be helpful."
+  },
+  {
+    "sender": "LV10000",
+    "receiver": "LV10003",
+    "message": "By the way, are you going to the company picnic next week?"
+  },
+  {
+    "sender": "LV10003",
+    "receiver": "LV10000",
+    "message": "I wouldn't miss it! I heard they're having a barbecue contest."
+  },
+  {
+    "sender": "LV10000",
+    "receiver": "LV10003",
+    "message": "Haha, I'm entering. My secret recipe will win for sure."
+  },
+  {
+    "sender": "LV10003",
+    "receiver": "LV10000",
+    "message": "We'll see about that! I'm pretty confident in my skills."
+  },
+  {
+    "sender": "LV10000",
+    "receiver": "LV10003",
+    "message": "It's on! Looking forward to it. See you at 3."
+  },
+  {
+    "sender": "LV10003",
+    "receiver": "LV10000",
+    "message": "See you then."
+  },
+  {
+    "sender": "LV10003",
+    "receiver": "LV10000",
+    "message": "Quick question before the meeting - should I bring printed copies of the slides?"
+  },
+  {
+    "sender": "LV10000",
+    "receiver": "LV10003",
+    "message": "No, we're doing it digitally. Just bring your laptop."
+  },
+  {
+    "sender": "LV10003",
+    "receiver": "LV10000",
+    "message": "Got it, thanks for the confirmation!"
+  }
+]

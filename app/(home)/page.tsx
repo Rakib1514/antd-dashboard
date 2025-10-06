@@ -1,10 +1,24 @@
 "use client";
 
-import { Button, Card, Carousel, Col, Image, Row, Typography } from "antd";
-
-
+import {
+  Button,
+  Card,
+  Carousel,
+  Col,
+  Image,
+  Row,
+  Spin,
+  Typography,
+} from "antd";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const { Title } = Typography;
   const carouselImages = [
     "https://i.ibb.co.com/6R2vG8RX/36291915-8406236-1.jpg",
@@ -36,6 +50,21 @@ export default function Home() {
     },
   ];
 
+  if (!isMounted) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "100vh",
+        }}
+      >
+        <Spin size="large" />
+      </div>
+    );
+  }
+
   return (
     <div>
       {/* Carousel */}
@@ -60,7 +89,7 @@ export default function Home() {
       {/* Row of Cards */}
       <Row gutter={16}>
         <Col span={24}>
-          <Title level={3} style={{ margin: "2rem 0", textAlign: "center" }} >
+          <Title level={3} style={{ margin: "2rem 0", textAlign: "center" }}>
             Most Popular{" "}
           </Title>
           <Row
@@ -76,7 +105,6 @@ export default function Home() {
                       alt={food.title}
                       src={food.img}
                       draggable={false}
-                      
                       style={{ height: "200px", objectFit: "cover" }}
                     />
                   }

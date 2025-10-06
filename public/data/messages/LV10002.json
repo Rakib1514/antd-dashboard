@@ -1,0 +1,27 @@
+[
+  {
+    "sender": "LV10000",
+    "receiver": "LV10002",
+    "message": "Hello, how are you?"
+  },
+  {
+    "sender": "LV10002",
+    "receiver": "LV10000",
+    "message": "I'm good, thanks!"
+  },
+  {
+    "sender": "LV10000",
+    "receiver": "LV10002",
+    "message": "That's great to hear!"
+  },
+  {
+    "sender": "LV10002",
+    "receiver": "LV10000",
+    "message": "You're welcome!"
+  },
+  {
+    "sender": "LV10000",
+    "receiver": "LV10002",
+    "message": "Have a nice day!"
+  }
+]

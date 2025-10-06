@@ -1,0 +1,26 @@
+[
+  {
+    "id": "LV10002",
+    "fullName": "John Doe",
+    "avatar": "https://i.ibb.co.com/239xNyyG/4d1809d311cae1b538d7d423c7bc1f86541c0d8d.png",
+    "lastMessage": "Have a nice day!"
+  },
+  {
+    "id": "LV10003",
+    "fullName": "Jane Smith",
+    "avatar": "https://i.ibb.co.com/5pd1Nnh/rings.jpg",
+    "lastMessage": "Hi, how can I help you?"
+  },
+  {
+    "id": "LV10004",
+    "fullName": "Bob Johnson",
+    "avatar": "https://i.ibb.co.com/8LSSn9kc/4615-1.jpg",
+    "lastMessage": "Good morning!"
+  },
+  {
+    "id": "LV10005",
+    "fullName": "Alice Brown",
+    "avatar": "https://i.ibb.co.com/239xNyyG/4d1809d311cae1b538d7d423c7bc1f86541c0d8d.png",
+    "lastMessage": "How can I assist you today?"
+  }
+]

@@ -1,6 +1,6 @@
 "use client";
 
-import { Flex, Layout, Space } from "antd";
+import { Flex, Layout } from "antd";
 import Navbar from "./Navbar";
 import Sidebar from "./siderBar/Sidebar";
 
@@ -10,22 +10,24 @@ interface LayoutWrapperProps {
   showSider?: boolean;
   showFooter?: boolean;
   customHeader?: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
 export default function LayoutWrapper({
   children,
-  showHeader,
-  showSider,
-  showFooter,
+  showHeader = true,
+  showSider = true,
+  showFooter = true,
   customHeader,
+  style,
 }: LayoutWrapperProps) {
   return (
-    <Layout>
+    <Layout style={style}>
       {showHeader && <Navbar />}
 
       <Layout>
         {showSider && <Sidebar />}
-        <Flex vertical>
+        <Flex vertical style={{ width: "100%" }}>
           {customHeader && customHeader}
           <Layout>{children}</Layout>
         </Flex>

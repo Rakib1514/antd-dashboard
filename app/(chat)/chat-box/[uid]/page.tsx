@@ -11,14 +11,12 @@ import {
   Flex,
   Input,
   Layout,
-  Space,
-  Typography,
+  Typography
 } from "antd";
 import { useParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react"; // 👈 Import useRef
 
 const { TextArea } = Input;
-
 const { Sider } = Layout;
 
 export default function UserChatBox() {
@@ -28,6 +26,8 @@ export default function UserChatBox() {
   const { users } = useUser();
   const [newMessage, setNewMessage] = useState("");
   const myUid = "LV10000";
+  // 👈 1. Create a ref for the message container
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const selectedUser: User | undefined = useMemo(() => {
     return users.find((user) => user.id === uid);
@@ -38,6 +38,9 @@ export default function UserChatBox() {
       try {
         const response = await fetch(`/data/messages/${uid}.json`);
         const data = await response.json();
+        // 👈 Optional: If you want messages fetched in time-order but displayed reverse,
+        // you don't need to reverse it here. The messages in your JSON likely need
+        // to be sorted by date/time ascending for the display logic below to work.
         setMessages(data);
       } catch (error) {
         console.log(error);
@@ -50,6 +53,32 @@ export default function UserChatBox() {
     e.preventDefault();
     setNewMessage(e.target.value);
   };
+
+  // 👈 2. Add function to scroll to the bottom
+  const scrollToBottom = () => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
+    }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const handleSendMessage = () => {
+    if (newMessage.trim() === "") return;
+
+    const newMsg: Message = {
+      message: newMessage,
+      sender: myUid,
+      receiver: uid as string,
+    };
+
+    setMessages((prevMessages) => [...prevMessages, newMsg]);
+    setNewMessage("");
+  };
+
+  // Note: Added `onClick={handleSendMessage}` to the Send button below
 
   return (
     <Layout>
@@ -72,9 +101,19 @@ export default function UserChatBox() {
             width: "100%",
             height: "calc(100vh - 250px)",
             overflowY: "auto",
+            // You can use flex-direction: column-reverse if you want the *first* message to be at the bottom,
+            // but the standard is to map normally (oldest at top, newest at bottom) and rely on auto-scroll.
+            display: "flex",
+            flexDirection: "column",
           }}
+          // 👈 4. Attach the ref to the scrollable container
+          ref={messagesEndRef}
         >
-          <Space direction="vertical" style={{ width: "100%" }}>
+          <Flex vertical style={{ width: "100%" }}>
+            {/* Messages are already mapped in the correct order (oldest to newest) 
+            assuming your data is ordered that way. The scroll to bottom handles showing 
+            the latest. If your messages array is newest-to-oldest, you must reverse it here: 
+            {messages.slice().reverse().map(...) */}
             {messages.map((msg, idx) => {
               const sendByMe = msg.sender === myUid;
               return (
@@ -92,6 +131,7 @@ export default function UserChatBox() {
                       backgroundColor: sendByMe ? "#bae7ff" : "#f5f5f5",
                       borderRadius: 12,
                       wordBreak: "break-word",
+                      margin: "2px 0",
                     }}
                   >
                     <Typography.Text>{msg.message}</Typography.Text>
@@ -99,21 +139,23 @@ export default function UserChatBox() {
                 </div>
               );
             })}
-          </Space>
+          </Flex>
         </Card>
 
         <Flex>
           <TextArea
-            placeholder="textarea with clear icon"
+            placeholder="Write your message"
             allowClear
             onChange={onTextInputChange}
             showCount
             size="large"
-            autoSize={{ minRows: 2, maxRows: 3 }}
+            autoSize={{ minRows: 2, maxRows: 2 }}
+            value={newMessage}
           />
           <Button
             disabled={!newMessage}
             style={{ height: "100%", padding: "0 36px" }}
+            onClick={handleSendMessage}
           >
             <SendOutlined />
           </Button>

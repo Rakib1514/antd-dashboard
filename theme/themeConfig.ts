@@ -10,7 +10,6 @@ const themeAntd: ThemeConfig = {
     // Expand Custom token
     colorBgPrimary50: "#F1F2F7",
     colorBlack: "#000000",
-
     colorGray: "#808080",
   },
   components: {
@@ -29,4 +28,6 @@ const themeAntd: ThemeConfig = {
   },
 };
 
+
 export default themeAntd;
+

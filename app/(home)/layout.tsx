@@ -5,8 +5,7 @@ export default function AppLayout({ children }: PropsWithChildren) {
   return (
     <>
       <LayoutWrapper showHeader showSider={false}>
-
-      {children}
+        {children}
       </LayoutWrapper>
     </>
   );
