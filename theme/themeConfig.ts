@@ -14,8 +14,8 @@ const themeAntd: ThemeConfig = {
   },
   components: {
     Button: {
-      borderRadius: 5,
-      fontWeight: 500,
+      borderRadius: 5,  
+      fontWeight: 500,    
       fontSize: 12,
       lineHeight: 20,
     },

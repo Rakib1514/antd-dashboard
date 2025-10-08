@@ -1,4 +1,3 @@
-"use client";
 
 import { Flex, Layout } from "antd";
 import Navbar from "./Navbar";

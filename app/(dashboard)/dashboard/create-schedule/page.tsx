@@ -1,5 +1,6 @@
 "use client";
 import {
+  DateSelectArg,
   EventClickArg,
   EventDropArg,
   EventInput,
@@ -28,7 +29,7 @@ import { useState } from "react";
 
 const { RangePicker } = DatePicker;
 
-const {Text } = Typography
+const { Text } = Typography;
 
 const initialEvents: EventInput[] = [
   {
@@ -75,7 +76,10 @@ export default function CreateSchedule() {
   const { token } = theme.useToken();
 
   const [events, setEvents] = useState(initialEvents);
-  const [newEventDate, setNewEventDate] = useState<Date | null>(null);
+  const [newEventDate, setNewEventDate] = useState<{
+    start: Date;
+    end?: Date | null;
+  } | null>(null);
 
   const [selectedEvent, setSelectedEvent] = useState<EventClickArg | null>(
     null
@@ -85,8 +89,26 @@ export default function CreateSchedule() {
 
   const handleDateClick = (arg: DateClickArg) => {
     console.log(arg);
-    setNewEventDate(arg.date);
+    setNewEventDate({ start: arg.date });
+    // arg.date (start date of the day clicked)
     form.setFieldsValue({ schedule: [dayjs(arg.date), undefined] });
+  };
+
+  const handleEventSelect = (arg: DateSelectArg) => {
+    // console.log("Selected range:", arg);
+
+    const start = arg.start;
+    const end = arg.end;
+
+    console.log("Start:", start);
+    console.log("End:", end);
+
+    setNewEventDate({ start, end });
+
+    // form pre-fill
+    form.setFieldsValue({
+      schedule: [dayjs(start), dayjs(end)],
+    });
   };
 
   const handleEventSave = (values: FieldType) => {
@@ -95,7 +117,8 @@ export default function CreateSchedule() {
     const event: EventInput = {
       id: (events.length + 1).toString(),
       title: values.title,
-      start: values.schedule?.[0]?.toISOString() || newEventDate.toISOString(),
+      start:
+        values.schedule?.[0]?.toISOString() || newEventDate.start.toISOString(),
       end:
         values.schedule?.[1]?.toISOString() ||
         values.schedule?.[0]?.toISOString(),
@@ -148,6 +171,7 @@ export default function CreateSchedule() {
         dateClick={handleDateClick}
         eventClick={handleEventClick}
         eventDrop={handleEventDrop}
+        select={handleEventSelect}
         headerToolbar={{
           left: "prev,next today",
           center: "title",
@@ -190,7 +214,12 @@ export default function CreateSchedule() {
           style={{ maxWidth: 600 }}
           initialValues={{
             backgroundColor: token.colorPrimary,
-            schedule: [dayjs(newEventDate), null],
+            schedule: newEventDate
+              ? [
+                  dayjs(newEventDate.start),
+                  newEventDate.end ? dayjs(newEventDate.end) : null,
+                ]
+              : [null, null],
           }}
           onFinish={handleEventSave}
           autoComplete="off"
@@ -262,89 +291,102 @@ export default function CreateSchedule() {
         </Form>
       </Modal>
 
-    
-<Modal
-  title={
-    selectedEvent && (
-      <Text
-        style={{
-          backgroundColor: selectedEvent.event.backgroundColor,
-          color: selectedEvent.event.textColor || "#fff",
-          padding: "8px 12px",
-          borderRadius: 4,
-          display: "inline-block",
-        }}
+      <Modal
+        title={
+          selectedEvent && (
+            <Text
+              style={{
+                backgroundColor: selectedEvent.event.backgroundColor,
+                color: selectedEvent.event.textColor || "#fff",
+                padding: "8px 12px",
+                borderRadius: 4,
+                display: "inline-block",
+              }}
+            >
+              {selectedEvent.event.title}
+            </Text>
+          )
+        }
+        open={selectedEvent !== null}
+        onCancel={() => setSelectedEvent(null)}
+        footer={[
+          <Button
+            key="close"
+            type="primary"
+            onClick={() => setSelectedEvent(null)}
+          >
+            Close
+          </Button>,
+        ]}
       >
-        {selectedEvent.event.title}
-      </Text>
-    )
-  }
-  open={selectedEvent !== null}
-  onCancel={() => setSelectedEvent(null)}
-  footer={[
-    <Button key="close" type="primary" onClick={() => setSelectedEvent(null)}>
-      Close
-    </Button>,
-  ]}
->
-  {selectedEvent && (
-    <Space direction="vertical" size="middle" style={{ width: "100%" }}>
-      <Row gutter={[8, 8]}>
-        <Col span={8}>
-          <Text strong>Description:</Text>
-        </Col>
-        <Col span={16}>
-          <Text>{selectedEvent.event.extendedProps.description || "N/A"}</Text>
-        </Col>
-      </Row>
+        {selectedEvent && (
+          <Space direction="vertical" size="middle" style={{ width: "100%" }}>
+            <Row gutter={[8, 8]}>
+              <Col span={8}>
+                <Text strong>Description:</Text>
+              </Col>
+              <Col span={16}>
+                <Text>
+                  {selectedEvent.event.extendedProps.description || "N/A"}
+                </Text>
+              </Col>
+            </Row>
 
-      <Row gutter={[8, 8]}>
-        <Col span={8}>
-          <Text strong>Location:</Text>
-        </Col>
-        <Col span={16}>
-          <Text>{selectedEvent.event.extendedProps.location || "N/A"}</Text>
-        </Col>
-      </Row>
+            <Row gutter={[8, 8]}>
+              <Col span={8}>
+                <Text strong>Location:</Text>
+              </Col>
+              <Col span={16}>
+                <Text>
+                  {selectedEvent.event.extendedProps.location || "N/A"}
+                </Text>
+              </Col>
+            </Row>
 
-      <Row gutter={[8, 8]}>
-        <Col span={8}>
-          <Text strong>Guests:</Text>
-        </Col>
-        <Col span={16}>
-          <Text>
-            {(selectedEvent.event.extendedProps.guests || []).join(", ") || "N/A"}
-          </Text>
-        </Col>
-      </Row>
+            <Row gutter={[8, 8]}>
+              <Col span={8}>
+                <Text strong>Guests:</Text>
+              </Col>
+              <Col span={16}>
+                <Text>
+                  {(selectedEvent.event.extendedProps.guests || []).join(
+                    ", "
+                  ) || "N/A"}
+                </Text>
+              </Col>
+            </Row>
 
-      <Row gutter={[8, 8]}>
-        <Col span={8}>
-          <Text strong>Category:</Text>
-        </Col>
-        <Col span={16}>
-          <Text>{selectedEvent.event.extendedProps.category || "N/A"}</Text>
-        </Col>
-      </Row>
+            <Row gutter={[8, 8]}>
+              <Col span={8}>
+                <Text strong>Category:</Text>
+              </Col>
+              <Col span={16}>
+                <Text>
+                  {selectedEvent.event.extendedProps.category || "N/A"}
+                </Text>
+              </Col>
+            </Row>
 
-      <Row gutter={[8, 8]}>
-        <Col span={8}>
-          <Text strong>Schedule:</Text>
-        </Col>
-        <Col span={16}>
-          <Text>
-            {dayjs(selectedEvent.event.start).format("YYYY-MM-DD hh:mm A")}
-            {selectedEvent.event.end
-              ? ` - ${dayjs(selectedEvent.event.end).format("YYYY-MM-DD hh:mm A")}`
-              : ""}
-          </Text>
-        </Col>
-      </Row>
-
-      
-    </Space>
-  )}
-</Modal>
+            <Row gutter={[8, 8]}>
+              <Col span={8}>
+                <Text strong>Schedule:</Text>
+              </Col>
+              <Col span={16}>
+                <Text>
+                  {dayjs(selectedEvent.event.start).format(
+                    "YYYY-MM-DD hh:mm A"
+                  )}
+                  {selectedEvent.event.end
+                    ? ` - ${dayjs(selectedEvent.event.end).format(
+                        "YYYY-MM-DD hh:mm A"
+                      )}`
+                    : ""}
+                </Text>
+              </Col>
+            </Row>
+          </Space>
+        )}
+      </Modal>
     </Layout>
   );
 }

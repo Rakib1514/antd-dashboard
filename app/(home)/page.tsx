@@ -1,31 +1,23 @@
-"use client";
+
+import BannerCarousel from "@/components/BannerCarousel";
+import { Title } from "@/components/Typography";
 
 import {
   Button,
   Card,
-  Carousel,
   Col,
   Image,
-  Row,
-  Spin,
-  Typography,
+  Row
 } from "antd";
-import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [isMounted, setIsMounted] = useState(false);
+  // const [isMounted, setIsMounted] = useState(false);
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  // useEffect(() => {
+  //   setIsMounted(true);
+  // }, []);
 
-  const { Title } = Typography;
-  const carouselImages = [
-    "https://i.ibb.co.com/6R2vG8RX/36291915-8406236-1.jpg",
-    "https://i.ibb.co.com/Txv4WtmB/20030255-6220339.jpg",
-    "https://i.ibb.co.com/6R2vG8RX/36291915-8406236-1.jpg",
-    "https://i.ibb.co.com/Txv4WtmB/20030255-6220339.jpg",
-  ];
+
 
   const foodItems = [
     {
@@ -50,47 +42,31 @@ export default function Home() {
     },
   ];
 
-  if (!isMounted) {
-    return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          minHeight: "100vh",
-        }}
-      >
-        <Spin size="large" />
-      </div>
-    );
-  }
+  // if (!isMounted) {
+  //   return (
+  //     <div
+  //       style={{
+  //         display: "flex",
+  //         justifyContent: "center",
+  //         alignItems: "center",
+  //         minHeight: "100vh",
+  //       }}
+  //     >
+  //       <Spin size="large" />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div>
       {/* Carousel */}
-      <Carousel autoplay>
-        {carouselImages.map((src, index) => (
-          <div key={index}>
-            <Image
-              src={src}
-              preview={false}
-              width="100%"
-              alt={`Slide ${index + 1}`}
-              style={{
-                width: "100%",
-                maxHeight: "60vh",
-                objectFit: "cover",
-              }}
-            />
-          </div>
-        ))}
-      </Carousel>
+      <BannerCarousel/>
 
       {/* Row of Cards */}
       <Row gutter={16}>
         <Col span={24}>
           <Title level={3} style={{ margin: "2rem 0", textAlign: "center" }}>
-            Most Popular{" "}
+            Most Popular
           </Title>
           <Row
             gutter={[16, 16]}

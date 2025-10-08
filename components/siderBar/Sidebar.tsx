@@ -1,41 +1,42 @@
-"use client";
 
 import SidebarMenu from "@/components/siderBar/SidebarMenu";
-import { Divider, Layout, Space, Spin, theme, Typography } from "antd";
-import { useEffect, useState } from "react";
+import { Divider, Layout, Space, theme } from "antd";
+// import { useState } from "react";
 const { Sider } = Layout;
 const { useToken } = theme;
 
+// const {Text} = Typography;
+
 export default function Sidebar() {
-  const [isSiderCollapsed, setIsSiderCollapsed] = useState(false);
-  const [isMounted, setIsMounted] = useState(false);
+  // const [isSiderCollapsed, setIsSiderCollapsed] = useState(false);
+  // const [isMounted, setIsMounted] = useState(false);
   const { token } = useToken();
 
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  // useEffect(() => {
+  //   setIsMounted(true);
+  // }, []);
 
-  if (!isMounted) {
-    return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          minHeight: "100vh",
-        }}
-      >
-        <Spin size="large" />
-      </div>
-    );
-  }
+  // if (!isMounted) {
+  //   return (
+  //     <div
+  //       style={{
+  //         display: "flex",
+  //         justifyContent: "center",
+  //         alignItems: "center",
+  //         minHeight: "100vh",
+  //       }}
+  //     >
+  //       <Spin size="large" />
+  //     </div>
+  //   );
+  // }
 
   return (
     <Sider
       width={240}
       style={{ minHeight: "100vh" }}
-      collapsed={isSiderCollapsed}
-      onCollapse={(value) => setIsSiderCollapsed(value)}
+      // collapsed={isSiderCollapsed}
+      // onCollapse={(value) => setIsSiderCollapsed(value)}
       collapsible
     >
       <Space
@@ -59,8 +60,8 @@ export default function Sidebar() {
           G
         </span>
 
-        {!isSiderCollapsed && (
-          <Typography.Text
+        {/* {!isSiderCollapsed && (
+          <Text
             strong
             style={{
               fontSize: "11px",
@@ -69,8 +70,8 @@ export default function Sidebar() {
             }}
           >
             GOODFOOD
-          </Typography.Text>
-        )}
+          </Text>
+        )} */}
       </Space>
       <Divider style={{ margin: 0 }} />
 

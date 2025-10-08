@@ -1,0 +1,70 @@
+// app/api/dishes/route.ts
+import { NextResponse } from 'next/server';
+
+const dishes = [
+  {
+    id: 1,
+    title: "Chicken Biryani",
+    description: "A flavorful South Asian rice dish cooked with aromatic spices and tender chicken.",
+    price: 12.99
+  },
+  {
+    id: 2,
+    title: "Margherita Pizza",
+    description: "Classic Italian pizza topped with fresh mozzarella, tomatoes, and basil leaves.",
+    price: 9.5
+  },
+  {
+    id: 3,
+    title: "Beef Burger",
+    description: "Juicy grilled beef patty served in a soft bun with cheese, lettuce, and sauces.",
+    price: 8.75
+  },
+  {
+    id: 4,
+    title: "Pasta Alfredo",
+    description: "Creamy pasta tossed in a rich Alfredo sauce with parmesan cheese.",
+    price: 11.25
+  },
+  {
+    id: 5,
+    title: "Grilled Salmon",
+    description: "Perfectly grilled salmon fillet served with lemon butter sauce and veggies.",
+    price: 15.99
+  },
+  {
+    id: 6,
+    title: "Caesar Salad",
+    description: "Crisp romaine lettuce with Caesar dressing, croutons, and parmesan cheese.",
+    price: 7.25
+  },
+  {
+    id: 7,
+    title: "Tacos al Pastor",
+    description: "Mexican-style tacos with marinated pork, pineapple, and cilantro.",
+    price: 6.5
+  },
+  {
+    id: 8,
+    title: "Shawarma Wrap",
+    description: "Middle Eastern wrap filled with spiced chicken, garlic sauce, and veggies.",
+    price: 5.99
+  },
+  {
+    id: 9,
+    title: "Sushi Platter",
+    description: "Assorted sushi rolls with fresh fish, rice, and seaweed.",
+    price: 18.5
+  },
+  {
+    id: 10,
+    title: "Chocolate Lava Cake",
+    description: "Rich chocolate cake with a gooey molten center, served warm.",
+    price: 6.75
+  }
+];
+
+
+export async function GET() {
+  return NextResponse.json(dishes);
+}

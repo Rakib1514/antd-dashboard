@@ -1,39 +1,21 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
-import { Card, Row, Col, Typography, Spin } from "antd";
-
-const { Title, Paragraph, Text } = Typography;
+import { Card, Col, Row } from "antd";
+import {Title, Paragraph, Text} from "@/components/Typography";
 
 interface Dish {
+  id: number;
   title: string;
   description: string;
   price: number;
 }
 
-export default function DishDetails() {
-  const { id } = useParams();
-  const [dish, setDish] = useState<Dish | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetch("/dishes.json")
-      .then((res) => res.json())
-      .then((data: Dish[]) => {
-        const selected = data[Number(id)];
-        setDish(selected);
-        setLoading(false);
-      });
-  }, [id]);
-
-  if (loading) {
-    return (
-      <Row justify="center" style={{ marginTop: 50 }}>
-        <Spin size="large" />
-      </Row>
-    );
-  }
+export default async function DishDetails({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const res = await fetch(`http://localhost:3000/api/dishes`);
+  const dishes: Dish[] = await res.json();
+  const dish = dishes.find((d) => d.id === parseInt(params.id));
 
   if (!dish) {
     return (

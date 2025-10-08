@@ -41,13 +41,8 @@ export default function SidebarMenu() {
     },
     {
       key: "/dashboard/create-schedule",
-      icon: <StarOutlined />,
-      label: "Crate Schedule",
-    },
-    {
-      key: "/dashboard/view-calender",
       icon: <CalendarOutlined />,
-      label: "View Calender",
+      label: "Create Schedule",
     },
     { type: "divider", style: { margin: "16px 0" } },
     {

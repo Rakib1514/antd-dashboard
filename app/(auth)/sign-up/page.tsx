@@ -13,7 +13,7 @@ import {
   Row,
   Select,
   Space,
-  Typography
+  Typography,
 } from "antd";
 import type { DefaultOptionType } from "antd/es/select";
 import { useState } from "react";
@@ -88,8 +88,6 @@ const tailFormItemLayout: FormItemProps = {
 const SignUp = () => {
   const [form] = Form.useForm();
 
-
-
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <Select style={{ width: 70 }}>
@@ -98,8 +96,6 @@ const SignUp = () => {
       </Select>
     </Form.Item>
   );
-
-
 
   const [autoCompleteResult, setAutoCompleteResult] = useState<string[]>([]);
 
